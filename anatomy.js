@@ -1,0 +1,172 @@
+/* ---------- Anatomy atlas: systems, unlabelled diagrams and numbered structures (data only) ----------
+   js/anatomy-view.js renders. Images: Wikimedia Commons diagrams published WITHOUT labels (so they can be used for
+   self-testing), resized and converted to WebP (= modified). pins: [x, y] in pixels of the stored image (w × h),
+   n = English name, ar = Arabic name, d = key fact. Every pin was placed and checked visually on the image. */
+Object.assign(REFS,{
+grays:{c:'Standring S, ed. Gray’s Anatomy: The Anatomical Basis of Clinical Practice. 42nd ed. Elsevier; 2020.'},
+openstax_ap:{c:'Betts JG, Young KA, Wise JA, et al. Anatomy and Physiology. 2nd ed. Houston, TX: OpenStax; 2022.',u:'https://openstax.org/details/books/anatomy-and-physiology-2e'}
+});
+const ANAT_SYS=[
+{id:'cardio',en:'Cardiovascular system',ar:'الجهاز القلبي الوعائي',ic:'heart'},
+{id:'nervous',en:'Nervous system and special senses',ar:'الجهاز العصبي والحواس الخاصة',ic:'body'},
+{id:'musculo',en:'Musculoskeletal system',ar:'الجهاز العضلي الهيكلي',ic:'bone'},
+{id:'resp',en:'Respiratory system',ar:'الجهاز التنفسي',ic:'pulse'},
+{id:'digest',en:'Digestive system',ar:'الجهاز الهضمي',ic:'flask'},
+{id:'urinary',en:'Urinary system',ar:'الجهاز البولي',ic:'drop'},
+{id:'endo',en:'Endocrine system',ar:'جهاز الغدد الصماء',ic:'dna'}
+];
+const AWC='https://commons.wikimedia.org/wiki/File:';
+const ANAT=[
+{id:'heart',sys:'cardio',f:'images/anatomy/anat-heart.webp',w:900,h:1083,title:'Heart — chambers, valves and great vessels',ar:'القلب – الحجرات والصمامات والأوعية الكبيرة',
+ view:'Coronal section of the heart seen from the front: the patient’s right side is on the viewer’s left. Blue = deoxygenated blood, red = oxygenated blood.',
+ by:'Stenemo (after Wapcaplet)',lic:'CC BY-SA 4.0',src:AWC+'Diagram_of_the_human_heart_(no_labels).svg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:215,y:250,n:'Superior vena cava',ar:'الوريد الأجوف العلوي',d:'Returns deoxygenated blood from the head, neck and upper limbs to the right atrium.'},
+  {x:440,y:200,n:'Aortic arch',ar:'قوس الأبهر',d:'Carries oxygenated blood from the left ventricle to the body; gives off the brachiocephalic, left common carotid and left subclavian arteries.'},
+  {x:395,y:420,n:'Pulmonary trunk',ar:'الجذع الرئوي',d:'Carries deoxygenated blood from the right ventricle towards the lungs; divides into the right and left pulmonary arteries.'},
+  {x:755,y:442,n:'Pulmonary veins',ar:'الأوردة الرئوية',d:'Return oxygenated blood from the lungs to the left atrium.'},
+  {x:230,y:600,n:'Right atrium',ar:'الأذين الأيمن',d:'Receives deoxygenated blood from the superior and inferior venae cavae.'},
+  {x:575,y:430,n:'Left atrium',ar:'الأذين الأيسر',d:'Receives oxygenated blood from the pulmonary veins.'},
+  {x:350,y:870,n:'Right ventricle',ar:'البطين الأيمن',d:'Pumps blood into the pulmonary trunk at low pressure.'},
+  {x:650,y:770,n:'Left ventricle',ar:'البطين الأيسر',d:'The thickest-walled chamber: pumps blood into the aorta at systemic pressure.'},
+  {x:290,y:715,n:'Tricuspid valve',ar:'الصمام ثلاثي الشرف',d:'Between the right atrium and right ventricle; three cusps held by chordae tendineae.'},
+  {x:600,y:560,n:'Mitral (bicuspid) valve',ar:'الصمام التاجي (ثنائي الشرف)',d:'Between the left atrium and left ventricle; two cusps.'},
+  {x:210,y:975,n:'Inferior vena cava',ar:'الوريد الأجوف السفلي',d:'Returns deoxygenated blood from the lower body to the right atrium.'}
+ ]},
+{id:'brain',sys:'nervous',f:'images/anatomy/anat-brain.webp',w:900,h:642,title:'Brain — lobes of the cerebrum (lateral view)',ar:'الدماغ – فصوص المخ (منظر جانبي)',
+ view:'Left side view of the brain with the front of the brain on the viewer’s right; each lobe of the cerebrum is shown in a different colour.',
+ by:'Ndelarosep',lic:'CC0',src:AWC+'Lobes_of_the_brain_INV.jpg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:700,y:250,n:'Frontal lobe',ar:'الفص الجبهي',d:'Planning, personality and voluntary movement (primary motor cortex in front of the central sulcus); speech production (Broca area, usually left).'},
+  {x:320,y:180,n:'Parietal lobe',ar:'الفص الجداري',d:'Body sensation (primary somatosensory cortex behind the central sulcus) and spatial awareness.'},
+  {x:110,y:330,n:'Occipital lobe',ar:'الفص القذالي',d:'Vision (primary visual cortex).'},
+  {x:430,y:390,n:'Temporal lobe',ar:'الفص الصدغي',d:'Hearing, memory and understanding language (Wernicke area, usually left).'},
+  {x:250,y:520,n:'Cerebellum',ar:'المخيخ',d:'Coordination of movement, balance and posture.'},
+  {x:330,y:595,n:'Brainstem',ar:'جذع الدماغ',d:'Midbrain, pons and medulla: breathing and cardiovascular centres and cranial nerve nuclei.'},
+  {x:466,y:140,n:'Central sulcus',ar:'التلم المركزي',d:'Separates the frontal lobe from the parietal lobe: motor cortex in front, sensory cortex behind.'},
+  {x:604,y:400,n:'Lateral sulcus (Sylvian fissure)',ar:'التلم الجانبي (شق سلفيوس)',d:'Separates the temporal lobe from the frontal and parietal lobes.'}
+ ]},
+{id:'spine',sys:'nervous',f:'images/anatomy/anat-spine.webp',w:900,h:1337,title:'Vertebral column and spinal nerves (posterior view)',ar:'العمود الفقري والأعصاب الشوكية (منظر خلفي)',
+ view:'The vertebral column from behind with the spinal nerves leaving it; the empty boxes mark the cervical, thoracic and lumbar regions.',
+ by:'Andrewmeyerson',lic:'CC BY-SA 4.0',src:AWC+'Diagram_of_the_Spinal_Cord_Unlabeled.jpg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:480,y:330,n:'Cervical vertebrae',ar:'الفقرات العنقية',d:'Seven vertebrae of the neck; C1 (atlas) and C2 (axis) allow nodding and rotation of the head.'},
+  {x:480,y:560,n:'Thoracic vertebrae',ar:'الفقرات الصدرية',d:'Twelve vertebrae that articulate with the ribs.'},
+  {x:480,y:790,n:'Lumbar vertebrae',ar:'الفقرات القطنية',d:'Five large vertebrae of the lower back; lumbar puncture is done below the end of the spinal cord, usually at L3–L4 or L4–L5.'},
+  {x:480,y:930,n:'Sacrum',ar:'العجز',d:'Five fused vertebrae; joins the hip bones at the sacroiliac joints.'},
+  {x:480,y:1020,n:'Coccyx',ar:'العُصعص',d:'The tailbone: small fused vertebrae at the end of the column.'},
+  {x:330,y:440,n:'Brachial plexus',ar:'الضفيرة العضدية',d:'Network of nerves from C5–T1 that supplies the upper limb.'},
+  {x:420,y:530,n:'Intercostal (thoracic spinal) nerves',ar:'الأعصاب الوربية',d:'Run between the ribs and supply the chest and abdominal wall.'},
+  {x:360,y:1050,n:'Sciatic nerve',ar:'العصب الوركي',d:'The largest nerve in the body (L4–S3), from the sacral plexus to the back of the thigh and the leg.'}
+ ]},
+{id:'eye',sys:'nervous',f:'images/anatomy/anat-eye.webp',w:900,h:644,title:'Eye — structure of the eyeball',ar:'العين – تركيب كرة العين',
+ view:'Cross-section of the eyeball with the front of the eye on the left; the pink line shows the path of light to the back of the eye.',
+ by:'Chris Sullivan',lic:'CC BY-SA 4.0',src:AWC+'Eye_anatomy_drawing_that_is_unlabeled_for_teaching.jpg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:205,y:260,n:'Cornea',ar:'القرنية',d:'Transparent front of the eye and its main refracting surface.'},
+  {x:310,y:430,n:'Iris',ar:'القزحية',d:'Coloured muscular ring that controls the size of the pupil.'},
+  {x:310,y:330,n:'Pupil',ar:'البؤبؤ (الحدقة)',d:'Opening in the iris that lets light in.'},
+  {x:410,y:300,n:'Lens',ar:'العدسة',d:'Fine-focuses light on the retina; clouding of the lens is a cataract.'},
+  {x:360,y:180,n:'Ciliary body',ar:'الجسم الهدبي',d:'Produces aqueous humour and changes the shape of the lens for near vision.'},
+  {x:620,y:150,n:'Retina',ar:'الشبكية',d:'Light-sensitive layer with rods and cones.'},
+  {x:820,y:415,n:'Optic nerve',ar:'العصب البصري',d:'Carries visual signals from the retina to the brain.'},
+  {x:540,y:100,n:'Sclera',ar:'الصلبة',d:'Tough white outer coat of the eyeball.'},
+  {x:580,y:250,n:'Vitreous body',ar:'الجسم الزجاجي',d:'Clear gel that fills the back of the eyeball.'}
+ ]},
+{id:'skeleton',sys:'musculo',f:'images/anatomy/anat-skeleton.webp',w:900,h:1740,title:'Skeleton — major bones (anterior view)',ar:'الهيكل العظمي – العظام الرئيسية (منظر أمامي)',
+ view:'The adult skeleton from the front: the patient’s right side is on the viewer’s left.',
+ by:'Mikael Häggström',lic:'Public domain',src:AWC+'Human_skeleton_front_-_no_labels.svg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:420,y:120,n:'Skull (cranium)',ar:'الجمجمة',d:'Protects the brain; the frontal bone forms the forehead above the orbits.'},
+  {x:420,y:225,n:'Mandible',ar:'الفك السفلي',d:'The lower jaw: the only movable bone of the skull.'},
+  {x:310,y:305,n:'Clavicle',ar:'الترقوة',d:'The collar bone: links the upper limb to the trunk, from the sternum to the scapula.'},
+  {x:420,y:400,n:'Sternum',ar:'عظم القص',d:'The breastbone; with the ribs it protects the heart and lungs.'},
+  {x:320,y:470,n:'Ribs',ar:'الأضلاع',d:'Twelve pairs that form the thoracic cage.'},
+  {x:225,y:470,n:'Humerus',ar:'عظم العضد',d:'The bone of the upper arm.'},
+  {x:160,y:720,n:'Radius and ulna',ar:'الكعبرة والزند',d:'The two forearm bones; the radius is on the thumb side.'},
+  {x:420,y:640,n:'Vertebral column',ar:'العمود الفقري',d:'The spine: 33 vertebrae protecting the spinal cord (lumbar region shown here).'},
+  {x:310,y:720,n:'Hip bone (ilium)',ar:'عظم الورك (الحرقفة)',d:'The posterior iliac crest is the usual site for bone marrow aspiration and trephine biopsy.'},
+  {x:340,y:1000,n:'Femur',ar:'عظم الفخذ',d:'The thigh bone: the longest and strongest bone in the body.'},
+  {x:365,y:1225,n:'Patella',ar:'الرضفة',d:'The kneecap: a sesamoid bone in the quadriceps tendon.'},
+  {x:380,y:1400,n:'Tibia',ar:'الظنبوب (قصبة الساق)',d:'The weight-bearing bone on the inner side of the leg.'},
+  {x:500,y:1400,n:'Fibula',ar:'الشظية',d:'The thin bone on the outer side of the leg (shown on the left leg).'},
+  {x:175,y:920,n:'Bones of the hand',ar:'عظام اليد',d:'Eight carpals, five metacarpals and fourteen phalanges.'},
+  {x:330,y:1650,n:'Bones of the foot',ar:'عظام القدم',d:'Seven tarsals, five metatarsals and fourteen phalanges.'}
+ ]},
+{id:'muscles',sys:'musculo',f:'images/anatomy/anat-muscles.webp',w:659,h:751,title:'Muscles — superficial muscles (anterior view)',ar:'العضلات – العضلات السطحية (منظر أمامي)',
+ view:'Superficial muscles from the front; the left side of the chest is opened to show the ribs. The leader lines are from the original figure, with its labels removed.',
+ by:'OpenStax',lic:'CC BY 4.0',src:AWC+'Muscles;_anterior_view;_unlabeled.png',ref:['openstax_ap','grays'],
+ pins:[
+  {x:300,y:40,n:'Frontalis',ar:'العضلة الجبهية',d:'Raises the eyebrows and wrinkles the forehead.'},
+  {x:285,y:120,n:'Sternocleidomastoid',ar:'العضلة القصية الترقوية الخشائية',d:'Turns the head to the opposite side and flexes the neck.'},
+  {x:225,y:160,n:'Deltoid',ar:'العضلة الدالية',d:'Abducts the arm; a common site for intramuscular injection.'},
+  {x:280,y:195,n:'Pectoralis major',ar:'العضلة الصدرية الكبرى',d:'Adducts and medially rotates the arm.'},
+  {x:410,y:235,n:'Biceps brachii',ar:'العضلة ذات الرأسين العضدية',d:'Flexes the elbow and supinates the forearm.'},
+  {x:285,y:270,n:'Rectus abdominis',ar:'العضلة المستقيمة البطنية',d:'Flexes the trunk and supports the abdominal wall.'},
+  {x:250,y:300,n:'External oblique',ar:'العضلة المائلة الخارجية',d:'Compresses the abdomen and rotates the trunk.'},
+  {x:270,y:460,n:'Quadriceps femoris',ar:'العضلة رباعية الرؤوس الفخذية',d:'Extends the knee.'},
+  {x:265,y:600,n:'Tibialis anterior',ar:'العضلة الظنبوبية الأمامية',d:'Dorsiflexes and inverts the foot.'}
+ ]},
+{id:'resp',sys:'resp',f:'images/anatomy/anat-resp.webp',w:900,h:1217,title:'Respiratory system — airways and lungs',ar:'الجهاز التنفسي – المجاري الهوائية والرئتان',
+ view:'Upper and lower airways from the front (the patient’s right on the viewer’s left), with an enlarged view of alveoli and their blood supply.',
+ by:'Bibi Saint-Pol, Jmarchn (after Mariana Ruiz)',lic:'CC BY-SA 3.0',src:AWC+'Respiratory_system_complete_no_labels.svg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:235,y:180,n:'Nasal cavity',ar:'التجويف الأنفي',d:'Warms, humidifies and filters inhaled air.'},
+  {x:330,y:330,n:'Pharynx',ar:'البلعوم',d:'Shared passage for air and food behind the nose and mouth.'},
+  {x:315,y:420,n:'Larynx',ar:'الحنجرة',d:'The voice box: contains the vocal cords and protects the airway during swallowing.'},
+  {x:330,y:560,n:'Trachea',ar:'الرغامى (القصبة الهوائية)',d:'C-shaped cartilage rings keep the airway open.'},
+  {x:295,y:700,n:'Right main bronchus',ar:'القصبة الرئيسية اليمنى',d:'Wider, shorter and more vertical than the left, so inhaled objects usually enter it.'},
+  {x:150,y:800,n:'Right lung',ar:'الرئة اليمنى',d:'Has three lobes.'},
+  {x:560,y:800,n:'Left lung',ar:'الرئة اليسرى',d:'Has two lobes and a notch for the heart.'},
+  {x:460,y:640,n:'Bronchial tree (bronchi and bronchioles)',ar:'الشجرة القصبية (القصبات والقصيبات)',d:'Branching airways that carry air to the alveoli.'},
+  {x:300,y:1020,n:'Diaphragm',ar:'الحجاب الحاجز',d:'The main muscle of breathing; it flattens to draw air in.'},
+  {x:600,y:150,n:'Alveoli',ar:'الحويصلات الهوائية',d:'Thin-walled air sacs where oxygen and carbon dioxide are exchanged with the capillary blood.'}
+ ]},
+{id:'digest',sys:'digest',f:'images/anatomy/anat-digest.webp',w:900,h:803,title:'Digestive system — the gastrointestinal tract and accessory organs',ar:'الجهاز الهضمي – القناة الهضمية والأعضاء الملحقة',
+ view:'The digestive tract from mouth to anus with the liver, gallbladder and pancreas (the patient’s right on the viewer’s left). The lines are from the original diagram, without labels.',
+ by:'Mariana Ruiz (LadyofHats), Moez, Darkdadaah',lic:'Public domain',src:AWC+'Digestive_system_diagram_no_labels_arrows.svg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:390,y:150,n:'Oral cavity (mouth)',ar:'تجويف الفم',d:'Chewing begins digestion; salivary amylase starts breaking down starch.'},
+  {x:485,y:155,n:'Parotid gland',ar:'الغدة النكفية',d:'The largest salivary gland.'},
+  {x:470,y:300,n:'Oesophagus',ar:'المريء',d:'Muscular tube that moves food to the stomach by peristalsis.'},
+  {x:440,y:430,n:'Liver',ar:'الكبد',d:'Makes bile, albumin and most clotting factors, and metabolises drugs.'},
+  {x:394,y:492,n:'Gallbladder',ar:'المرارة',d:'Stores and concentrates bile.'},
+  {x:545,y:430,n:'Stomach',ar:'المعدة',d:'Secretes acid and pepsin; the site of Helicobacter pylori infection.'},
+  {x:502,y:494,n:'Pancreas',ar:'البنكرياس',d:'Makes digestive enzymes (exocrine) and insulin and glucagon (endocrine).'},
+  {x:470,y:600,n:'Small intestine (jejunum and ileum)',ar:'الأمعاء الدقيقة (الصائم واللفائفي)',d:'The main site of absorption; vitamin B12 is absorbed in the terminal ileum.'},
+  {x:365,y:600,n:'Ascending colon',ar:'القولون الصاعد',d:'Runs up the right side of the abdomen from the caecum.'},
+  {x:566,y:516,n:'Transverse colon',ar:'القولون المستعرض',d:'Crosses the upper abdomen below the stomach.'},
+  {x:570,y:610,n:'Descending colon',ar:'القولون النازل',d:'Runs down the left side of the abdomen.'},
+  {x:398,y:714,n:'Appendix',ar:'الزائدة الدودية',d:'Blind-ended tube from the caecum; inflammation is appendicitis.'},
+  {x:460,y:703,n:'Rectum',ar:'المستقيم',d:'Stores faeces before defecation.'},
+  {x:462,y:770,n:'Anus',ar:'الشرج',d:'The opening at the end of the tract, controlled by the anal sphincters.'}
+ ]},
+{id:'urinary',sys:'urinary',f:'images/anatomy/anat-urinary.webp',w:900,h:1218,title:'Urinary system — kidneys, ureters and bladder',ar:'الجهاز البولي – الكليتان والحالبان والمثانة',
+ view:'The urinary tract from the front (the patient’s right on the viewer’s left); the left kidney is cut open to show its inside.',
+ by:'Andrewmeyerson',lic:'CC BY-SA 3.0',src:AWC+'Urinary_System_Large_Unlabeled.jpg',ref:['grays','openstax_ap'],
+ pins:[
+  {x:240,y:390,n:'Kidney',ar:'الكلية',d:'Filters the blood and makes urine; also makes renin and erythropoietin and activates vitamin D.'},
+  {x:690,y:250,n:'Renal cortex',ar:'قشرة الكلية',d:'Outer part of the kidney containing the glomeruli.'},
+  {x:640,y:340,n:'Renal pelvis',ar:'حويضة الكلية',d:'Collects urine from the calyces and drains into the ureter.'},
+  {x:335,y:650,n:'Ureter',ar:'الحالب',d:'Muscular tube carrying urine from the kidney to the bladder.'},
+  {x:450,y:1060,n:'Urinary bladder',ar:'المثانة',d:'Stores urine.'},
+  {x:440,y:1160,n:'Urethra',ar:'الإحليل',d:'Carries urine from the bladder out of the body.'},
+  {x:330,y:180,n:'Adrenal gland',ar:'الغدة الكظرية',d:'Sits on top of the kidney; makes cortisol, aldosterone and adrenaline.'},
+  {x:490,y:520,n:'Abdominal aorta',ar:'الأبهر البطني',d:'Gives off the renal arteries at about the level of L1–L2.'},
+  {x:410,y:520,n:'Inferior vena cava',ar:'الوريد الأجوف السفلي',d:'Receives the renal veins and returns blood to the right atrium.'},
+  {x:540,y:300,n:'Renal artery',ar:'الشريان الكلوي',d:'Brings about a fifth of the cardiac output to the kidney.'}
+ ]},
+{id:'endo',sys:'endo',f:'images/anatomy/anat-endo.webp',w:900,h:864,title:'Endocrine system — major glands',ar:'جهاز الغدد الصماء – الغدد الرئيسية',
+ view:'Female (left) and male (right) figures with the main endocrine glands; the circles enlarge the brain region and the thyroid seen from behind.',
+ by:'OpenStax, Tomáš Kebert, umimeto.org',lic:'CC BY-SA 4.0',src:AWC+'Human_endocrine_male_&_female_svg_no_labels.svg',ref:['openstax_ap','tietz'],
+ pins:[
+  {x:470,y:155,n:'Pituitary gland',ar:'الغدة النخامية',d:'Makes TSH, ACTH, prolactin, growth hormone, LH and FSH; releases ADH and oxytocin.'},
+  {x:410,y:105,n:'Pineal gland',ar:'الغدة الصنوبرية',d:'Makes melatonin, which helps regulate the sleep–wake cycle.'},
+  {x:490,y:292,n:'Thyroid gland',ar:'الغدة الدرقية',d:'Makes thyroxine (T4) and triiodothyronine (T3), and calcitonin.'},
+  {x:400,y:320,n:'Parathyroid glands',ar:'الغدد جارات الدرقية',d:'Usually four small glands behind the thyroid; parathyroid hormone raises blood calcium.'},
+  {x:232,y:535,n:'Adrenal gland',ar:'الغدة الكظرية',d:'Cortex: cortisol and aldosterone; medulla: adrenaline and noradrenaline.'},
+  {x:700,y:556,n:'Pancreas (islets of Langerhans)',ar:'البنكرياس (جزر لانغرهانس)',d:'Insulin lowers and glucagon raises blood glucose.'},
+  {x:165,y:690,n:'Ovary',ar:'المبيض',d:'Makes oestrogen and progesterone.'},
+  {x:685,y:775,n:'Testis',ar:'الخصية',d:'Makes testosterone.'}
+ ]}
+];

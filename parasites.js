@@ -1,0 +1,125 @@
+/* ---------- Parasitology atlas: trematodes and cestodes (data only; js/parasites-view.js renders) ----------
+   Morphology, sizes and life cycles follow CDC DPDx and Cheesbrough; intensity classes follow WHO.
+   ph = photographs (openly licensed, credited); kind = what the photo shows. Short fields have an Arabic twin (…Ar). */
+Object.assign(REFS,{
+cdc_dpdx:{c:'Centers for Disease Control and Prevention. DPDx – Laboratory identification of parasites of public health concern. Atlanta: CDC.',u:'https://www.cdc.gov/dpdx/'},
+who_echino:{c:'WHO Informal Working Group on Echinococcosis. International classification of ultrasound images in cystic echinococcosis for application in clinical and field epidemiological settings. Acta Trop. 2003;85(2):253–261.'},
+who_foodborne:{c:'World Health Organization. Foodborne trematode infections: fact sheet. Geneva: WHO.',u:'https://www.who.int/news-room/fact-sheets/detail/foodborne-trematode-infections'},
+who_taeniasis:{c:'World Health Organization. Taeniasis/cysticercosis: fact sheet. Geneva: WHO.',u:'https://www.who.int/news-room/fact-sheets/detail/taeniasis-cysticercosis'}
+});
+
+const PARA_GROUPS=[
+{id:'trem',en:'Trematodes (flukes)',ar:'المثقوبات (الديدان المفلطحة الورقية)',ic:'worm'},
+{id:'cest',en:'Cestodes (tapeworms)',ar:'الشريطيات (الديدان الشريطية)',ic:'worm'}
+];
+
+const CDC_PD={by:'CDC Public Health Image Library (PHIL)',lic:'Public domain'};
+const PARASITES=[
+/* ---- Trematodes ---- */
+{id:'sh',grp:'trem',n:'Schistosoma haematobium',common:'Urinary blood fluke',ar:'البلهارسيا البولية',disease:'Urogenital schistosomiasis',diseaseAr:'البلهارسيا البولية التناسلية',
+ ph:[{f:'images/sh-egg.jpg',kind:'egg',cap:'Egg in urine with its terminal spine (unstained wet preparation).',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Schistosoma_haematobium_egg_4843_lores.jpg'}],
+ habitat:'Adults live in pairs in the veins around the urinary bladder (vesical venous plexus).',habitatAr:'تعيش الديدان البالغة أزواجاً في الأوردة المحيطة بالمثانة البولية.',
+ specimen:'Urine: terminal urine collected around midday (10:00–14:00), after light exercise; filtration or sedimentation of 10 mL.',specimenAr:'البول: آخر دفعة من البول قرب منتصف النهار (10:00–14:00) بعد مجهود خفيف، مع الترشيح أو الترسيب لـ 10 مل.',
+ egg:{size:'110–170 × 40–70 µm',shape:'Oval, with a rounded front end',key:'Terminal spine; no operculum; contains a miracidium',keyAr:'شوكة طرفية؛ بلا غطاء؛ تحتوي على الميراسيديوم'},
+ adult:['Male 10–15 mm with a ventral groove (gynaecophoral canal) that holds the longer, slender female.','Oral and ventral suckers; the gut splits and rejoins into a single caecum.'],
+ hosts:{def:'Humans',defAr:'الإنسان',inter:'Bulinus snails',interAr:'قواقع البولينوس',inf:'Cercariae penetrate the skin in fresh water',infAr:'السركاريا تخترق الجلد في المياه العذبة'},
+ cycle:['Eggs pass in urine and hatch in fresh water, releasing miracidia.','Miracidia infect Bulinus snails and multiply into thousands of cercariae.','Cercariae leave the snail and penetrate human skin during contact with water.','They lose their tails (schistosomula), travel in the blood and mature in the liver.','Adult pairs move to the bladder veins; eggs pass through the bladder wall into urine.'],
+ clinical:['Terminal haematuria; bladder and ureter fibrosis, calcification and obstruction.','Squamous cell carcinoma of the bladder in long-standing infection.','Female genital schistosomiasis.'],
+ lab:['Report eggs per 10 mL of urine: WHO heavy intensity is 50 or more eggs per 10 mL.','Examine more than one sample: egg output varies from day to day.','Check viability: a moving miracidium or flame cells show a live, active infection.','Eosinophilia and haematuria (dipstick) support the diagnosis in endemic areas.'],
+ ddx:['S. mansoni egg: lateral spine and found in stool.','Rarely S. haematobium eggs appear in stool, and S. mansoni eggs in urine.'],
+ atlas:'sh-egg',ref:['cdc_dpdx','who_schisto','cheesbrough1']},
+
+{id:'sm',grp:'trem',n:'Schistosoma mansoni',common:'Intestinal blood fluke',ar:'البلهارسيا المعوية',disease:'Intestinal and hepatosplenic schistosomiasis',diseaseAr:'البلهارسيا المعوية والكبدية الطحالية',
+ ph:[{f:'images/para-sm-egg.jpg',kind:'egg',cap:'Egg with the characteristic lateral spine.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Schistosoma_mansoni_egg_4841_lores.jpg'}],
+ habitat:'Adults live in pairs in the mesenteric veins draining the large intestine.',habitatAr:'تعيش الديدان البالغة أزواجاً في الأوردة المساريقية للأمعاء الغليظة.',
+ specimen:'Stool: Kato–Katz thick smear (eggs per gram) or formol–ether concentration; rectal biopsy when stool is negative.',specimenAr:'البراز: مسحة كاتو-كاتز السميكة (بيض لكل غرام) أو التركيز بالفورمول والإيثر؛ وخزعة المستقيم إذا كان البراز سلبياً.',
+ egg:{size:'114–180 × 45–70 µm',shape:'Large, oval',key:'Prominent lateral spine; no operculum; contains a miracidium',keyAr:'شوكة جانبية بارزة؛ بلا غطاء؛ تحتوي على الميراسيديوم'},
+ adult:['Male carries the female in the gynaecophoral canal, like other schistosomes.','Male has a tuberculated surface; the gut caecum rejoins early.'],
+ hosts:{def:'Humans',defAr:'الإنسان',inter:'Biomphalaria snails',interAr:'قواقع البيومفالاريا',inf:'Cercariae penetrate the skin in fresh water',infAr:'السركاريا تخترق الجلد في المياه العذبة'},
+ cycle:['Eggs pass in stool and hatch in fresh water, releasing miracidia.','Miracidia infect Biomphalaria snails and develop into cercariae.','Cercariae penetrate human skin during contact with water.','Schistosomula mature in the liver.','Adult pairs live in the mesenteric veins; eggs cross the gut wall into stool, and some are carried to the liver.'],
+ clinical:['Abdominal pain, diarrhoea and blood in stool.','Eggs trapped in the liver cause granulomas and periportal (Symmers) fibrosis, portal hypertension, splenomegaly and oesophageal varices.'],
+ lab:['Kato–Katz intensity (WHO): light 1–99, moderate 100–399, heavy 400 or more eggs per gram.','Examine several stool samples: egg output is irregular.','Serology or antigen tests (e.g. circulating cathodic antigen in urine) help when eggs are scanty.'],
+ ddx:['S. haematobium egg: terminal spine, found in urine.','S. japonicum egg: rounder with a tiny, inconspicuous spine.'],
+ ref:['cdc_dpdx','who_schisto','cheesbrough1']},
+
+{id:'fh',grp:'trem',n:'Fasciola hepatica',common:'Sheep liver fluke',ar:'دودة الكبد الورقية (المتورقة الكبدية)',disease:'Fascioliasis',diseaseAr:'داء المتورقات',
+ ph:[{f:'images/para-fh-egg.jpg',kind:'egg',cap:'Large, thin-shelled egg with a small operculum at one end (unembryonated).',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Egg_of_Fasciola_hepatica_08G0041_lores.jpg'},
+     {f:'images/para-fh-adult.jpg',kind:'adult',cap:'Adult flukes: leaf-shaped, with a cephalic cone and "shoulders".',by:'Alan R Walker',lic:'CC BY-SA 3.0',src:'https://commons.wikimedia.org/wiki/File:Fasciola-hepatica-adults.jpg'}],
+ habitat:'Adults live in the large bile ducts of the liver.',habitatAr:'تعيش الديدان البالغة في القنوات الصفراوية الكبيرة في الكبد.',
+ specimen:'Stool or duodenal aspirate for eggs (chronic phase); serology in the acute phase before eggs appear.',specimenAr:'البراز أو رشافة الاثني عشر للبحث عن البيض (المرحلة المزمنة)؛ والفحص المصلي في المرحلة الحادة قبل ظهور البيض.',
+ egg:{size:'130–150 × 60–90 µm',shape:'Broadly ellipsoidal, thin shell, yellow-brown (bile-stained)',key:'Small, inconspicuous operculum; unembryonated when passed',keyAr:'غطاء صغير غير واضح؛ غير مكتملة الجنين عند خروجها'},
+ adult:['Large, flat, leaf-shaped fluke about 20–30 × 8–13 mm.','Cephalic cone with "shoulders"; highly branched gut and testes.'],
+ hosts:{def:'Sheep, cattle and humans',defAr:'الأغنام والأبقار والإنسان',inter:'Lymnaeid snails',interAr:'قواقع الليمنيا',inf:'Metacercariae on water plants (e.g. watercress) or in water are swallowed',infAr:'ابتلاع الميتاسركاريا المتكيّسة على النباتات المائية (مثل الجرجير المائي) أو في الماء'},
+ cycle:['Unembryonated eggs pass in stool and develop in water; miracidia hatch.','Miracidia infect lymnaeid snails and develop into cercariae.','Cercariae encyst as metacercariae on water plants.','Humans or animals swallow metacercariae; young flukes cross the gut wall and burrow through the liver.','Adults settle in the bile ducts and start laying eggs about 3–4 months after infection.'],
+ clinical:['Acute (migratory) phase: fever, right upper quadrant pain, tender liver and marked eosinophilia.','Chronic phase: biliary colic, cholangitis and obstructive jaundice.'],
+ lab:['Eggs are absent in the first months: use serology in suspected acute fascioliasis.','False (spurious) fascioliasis: eggs from eaten animal liver pass in transit; repeat the stool after a liver-free diet.','Marked eosinophilia is typical in the acute phase.'],
+ ddx:['Fasciolopsis buski egg: practically identical — the history and geography help.','Other large operculated eggs (Diphyllobothrium is smaller, 58–75 µm).'],
+ ref:['cdc_dpdx','who_foodborne','cheesbrough1']},
+
+{id:'cs',grp:'trem',n:'Clonorchis sinensis',common:'Chinese liver fluke',ar:'دودة الكبد الصينية',disease:'Clonorchiasis',diseaseAr:'داء المتفرّعات الخصية',
+ ph:[{f:'images/para-cs-egg.jpg',kind:'egg',cap:'Small operculated egg with "shouldered" operculum.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_egg_06G0049_jpg_lores.jpg'}],
+ habitat:'Adults live in the small bile ducts of the liver.',habitatAr:'تعيش الديدان البالغة في القنوات الصفراوية الصغيرة في الكبد.',
+ specimen:'Stool (formol–ether concentration) or duodenal aspirate.',specimenAr:'البراز (التركيز بالفورمول والإيثر) أو رشافة الاثني عشر.',
+ egg:{size:'27–35 × 11–20 µm',shape:'Small, oval, light yellow-brown',key:'Operculum seated in prominent "shoulders"; small knob at the opposite end; contains a miracidium',keyAr:'غطاء مستقر بين «كتفين» بارزين؛ نتوء صغير في الطرف المقابل؛ تحتوي على الميراسيديوم'},
+ adult:['Flat, transparent fluke about 10–25 × 3–5 mm.','Two deeply branched testes in the posterior part.'],
+ hosts:{def:'Humans, cats and dogs',defAr:'الإنسان والقطط والكلاب',inter:'1st: freshwater snails; 2nd: freshwater fish',interAr:'الأول: قواقع المياه العذبة؛ الثاني: أسماك المياه العذبة',inf:'Metacercariae in raw or undercooked freshwater fish',infAr:'الميتاسركاريا في أسماك المياه العذبة النيئة أو غير المطهية جيداً'},
+ cycle:['Embryonated eggs pass in stool and are eaten by freshwater snails.','Cercariae leave the snail and encyst as metacercariae in the flesh of freshwater fish.','Humans eat raw or undercooked fish.','Young flukes leave the cyst in the duodenum and enter the bile ducts through the ampulla.','Adults mature in the bile ducts and lay eggs.'],
+ clinical:['Often silent; heavy infection causes cholangitis, gallstones and obstructive jaundice.','Long-standing infection increases the risk of cholangiocarcinoma.'],
+ lab:['The eggs are small: use concentration and examine with the ×40 objective.','Eggs of Opisthorchis are almost identical: report "Clonorchis/Opisthorchis-type eggs" if the species cannot be decided.'],
+ ddx:['Opisthorchis eggs: practically identical.','Heterophyes and Metagonimus eggs: similar size but less prominent shoulders.'],
+ ref:['cdc_dpdx','who_foodborne','cheesbrough1']},
+
+/* ---- Cestodes ---- */
+{id:'tsag',grp:'cest',n:'Taenia saginata',common:'Beef tapeworm',ar:'الدودة الشريطية البقرية',disease:'Taeniasis',diseaseAr:'داء الشريطيات',
+ ph:[{f:'images/para-taenia-egg.jpg',kind:'egg',cap:'Taenia egg: thick, radially striated shell (embryophore) around the oncosphere. T. saginata and T. solium eggs look the same.',by:'CDC DPDx',lic:'Public domain',src:'https://commons.wikimedia.org/wiki/File:Taenia_egg.jpg'}],
+ habitat:'The adult lives in the human small intestine.',habitatAr:'تعيش الدودة البالغة في الأمعاء الدقيقة للإنسان.',
+ specimen:'Stool for eggs and proglottids; perianal adhesive tape; a passed proglottid for species identification.',specimenAr:'البراز للبحث عن البيض والقطع؛ والشريط اللاصق حول الشرج؛ وقطعة خارجة لتحديد النوع.',
+ egg:{size:'30–35 µm diameter',shape:'Spherical, brown',key:'Thick radially striated embryophore; hexacanth oncosphere with 3 pairs of hooklets',keyAr:'غلاف جنيني سميك مخطط شعاعياً؛ جنين سداسي الأشواك بثلاثة أزواج من الخطاطيف'},
+ adult:['Usually 4–10 m long, with up to about 2000 proglottids.','Scolex has four suckers and no rostellum or hooks ("unarmed").','Gravid proglottid has about 15–20 (12–30) primary lateral uterine branches on each side.','Proglottids are motile and often crawl out of the anus on their own.'],
+ hosts:{def:'Humans',defAr:'الإنسان',inter:'Cattle (cysticercus in muscle)',interAr:'الأبقار (الكيسة المذنبة في العضلات)',inf:'Cysticerci in raw or undercooked beef',infAr:'الكيسات المذنبة في لحم البقر النيء أو غير المطهي جيداً'},
+ cycle:['Eggs or gravid proglottids pass in human stool and contaminate pasture.','Cattle swallow the eggs; oncospheres hatch and form cysticerci in muscle.','Humans eat raw or undercooked beef containing cysticerci.','The scolex attaches to the small intestine and the worm matures in about 2 months.'],
+ clinical:['Often mild: abdominal discomfort, weight loss, or noticing proglottids in stool or clothing.','T. saginata does not cause human cysticercosis.'],
+ lab:['Eggs cannot separate T. saginata from T. solium: identify the species from the proglottid branches (India ink injection) or the scolex.','Handle all Taenia material as potentially T. solium (eggs are infective): gloves and care.'],
+ ddx:['T. solium: armed scolex and 7–13 uterine branches.','Echinococcus eggs look the same but are not passed in human stool.'],
+ ref:['cdc_dpdx','who_taeniasis','cheesbrough1']},
+
+{id:'tsol',grp:'cest',n:'Taenia solium',common:'Pork tapeworm',ar:'الدودة الشريطية الخنزيرية',disease:'Taeniasis and cysticercosis',diseaseAr:'داء الشريطيات وداء الكيسات المذنبة',
+ ph:[{f:'images/para-ts-scolex.jpg',kind:'scolex',cap:'Armed scolex: four suckers and a rostellum with two rows of hooks.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg'},
+     {f:'images/para-taenia-egg.jpg',kind:'egg',cap:'Taenia egg (same appearance as T. saginata).',by:'CDC DPDx',lic:'Public domain',src:'https://commons.wikimedia.org/wiki/File:Taenia_egg.jpg'}],
+ habitat:'The adult lives in the human small intestine; the larva (cysticercus) can lodge in human muscle, brain and eye.',habitatAr:'تعيش الدودة البالغة في الأمعاء الدقيقة؛ ويمكن أن تستقر اليرقة (الكيسة المذنبة) في العضلات والدماغ والعين لدى الإنسان.',
+ specimen:'Taeniasis: stool for eggs and proglottids. Cysticercosis: imaging (CT/MRI) and serology (e.g. immunoblot).',specimenAr:'داء الشريطيات: البراز للبيض والقطع. داء الكيسات المذنبة: التصوير الطبقي أو الرنين والفحص المصلي.',
+ egg:{size:'30–35 µm diameter',shape:'Spherical, brown',key:'Same as T. saginata: radially striated embryophore with a hexacanth oncosphere',keyAr:'مثل الشريطية البقرية: غلاف مخطط شعاعياً وجنين سداسي الأشواك'},
+ adult:['Usually 2–7 m long.','Scolex "armed": four suckers and a rostellum with a double crown of hooks.','Gravid proglottid has about 7–13 primary lateral uterine branches on each side.'],
+ hosts:{def:'Humans',defAr:'الإنسان',inter:'Pigs; humans become accidental intermediate hosts',interAr:'الخنازير؛ ويصبح الإنسان عائلاً وسيطاً عرضياً',inf:'Taeniasis: cysticerci in undercooked pork. Cysticercosis: swallowing eggs (faecal–oral)',infAr:'داء الشريطيات: الكيسات في لحم الخنزير غير المطهي. داء الكيسات: ابتلاع البيض (برازي-فموي)'},
+ cycle:['Eggs or proglottids pass in human stool.','Pigs swallow the eggs and develop cysticerci in muscle.','Humans eating undercooked pork develop the adult tapeworm (taeniasis).','Humans who swallow eggs (from a carrier, food or water) develop cysticerci in tissues (cysticercosis), including the brain.'],
+ clinical:['Taeniasis: usually mild intestinal symptoms.','Neurocysticercosis: seizures (a leading cause of acquired epilepsy in endemic areas), headache and raised intracranial pressure.'],
+ lab:['Eggs are infective to humans: wear gloves and avoid contaminating hands, benches and food.','Identify the species from the scolex or a gravid proglottid; eggs alone are reported as "Taenia species".','Treat the tapeworm carrier promptly: they are the source of cysticercosis in the family.'],
+ ddx:['T. saginata: unarmed scolex and 15–20 uterine branches.','Hymenolepis nana: much smaller worm, egg with polar filaments.'],
+ ref:['cdc_dpdx','who_taeniasis','cheesbrough1']},
+
+{id:'eg',grp:'cest',n:'Echinococcus granulosus',common:'Dog tapeworm (hydatid tapeworm)',ar:'الشوكية الحبيبية (دودة الكلاب الشريطية)',disease:'Cystic echinococcosis (hydatid disease)',diseaseAr:'داء الأكياس العدارية',
+ ph:[{f:'images/para-eg-protoscolex.jpg',kind:'protoscolex',cap:'Protoscolex from a hydatid cyst, with hooks in two rows ("hydatid sand").',by:'Stefan Walkowski',lic:'CC BY-SA 4.0',src:'https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg'}],
+ habitat:'The tiny adult lives in the dog’s intestine; humans carry the larval hydatid cyst, mostly in the liver (about 70%) and lungs (about 20%).',habitatAr:'تعيش الدودة البالغة الصغيرة في أمعاء الكلب؛ ويحمل الإنسان الكيس العداري اليرقي، غالباً في الكبد (نحو 70%) والرئتين (نحو 20%).',
+ specimen:'Imaging (ultrasound, CT) and serology; microscopy of cyst fluid or surgical material for protoscolices and hooklets.',specimenAr:'التصوير (الموجات فوق الصوتية والطبقي) والفحص المصلي؛ وفحص سائل الكيس أو المادة الجراحية مجهرياً للبحث عن الرؤيسات والخطاطيف.',
+ egg:{size:'30–35 µm (taeniid egg)',shape:'Spherical',key:'Same as Taenia; not found in human stool because humans are intermediate hosts',keyAr:'مثل بيض الشريطيات؛ لا يوجد في براز الإنسان لأنه عائل وسيط'},
+ adult:['Very small: about 2–7 mm, usually with only 3 proglottids.','Scolex with four suckers and a rostellum with two rows of hooks.','Hydatid cyst: laminated layer, germinal layer, brood capsules and protoscolices ("hydatid sand").'],
+ hosts:{def:'Dogs and other canids',defAr:'الكلاب والكلبيات',inter:'Sheep, goats, cattle, camels; humans are accidental intermediate hosts',interAr:'الأغنام والماعز والأبقار والإبل؛ والإنسان عائل وسيط عرضي',inf:'Swallowing eggs from dog faeces (hands, food, water)',infAr:'ابتلاع البيض من براز الكلاب (اليدان والطعام والماء)'},
+ cycle:['Eggs pass in dog faeces and contaminate soil, grass and water.','Livestock (or humans) swallow eggs; oncospheres travel in the blood to the liver, lungs or other organs.','A hydatid cyst grows slowly and produces protoscolices.','Dogs eat infected offal containing cysts, and the protoscolices grow into adult worms.'],
+ clinical:['Slow-growing cysts cause symptoms from pressure: liver mass, cough, chest pain.','Cyst rupture can cause anaphylaxis and spread of the infection.'],
+ lab:['Ultrasound with the WHO cyst classification is the main diagnostic tool; serology supports it.','Never aspirate a suspected hydatid cyst outside an approved treatment protocol (risk of anaphylaxis and spread).','In cyst fluid look for protoscolices, free hooklets (acid-fast) and laminated membrane fragments.'],
+ ddx:['Simple liver cyst or abscess on imaging.','E. multilocularis: alveolar echinococcosis, infiltrative and more dangerous.'],
+ ref:['cdc_dpdx','who_echino','who_biosafety']},
+
+{id:'hn',grp:'cest',n:'Hymenolepis nana',common:'Dwarf tapeworm',ar:'الدودة الشريطية القزمة',disease:'Hymenolepiasis',diseaseAr:'داء المحرشفات',
+ ph:[{f:'images/para-hn-egg.jpg',kind:'egg',cap:'Egg with an inner membrane showing two polar thickenings and polar filaments around the hexacanth oncosphere.',by:'CDC Public Health Image Library (PHIL)',lic:'CC0',src:'https://commons.wikimedia.org/wiki/File:4836_lores.jpg'}],
+ habitat:'The adult lives in the small intestine (ileum).',habitatAr:'تعيش الدودة البالغة في الأمعاء الدقيقة (اللفائفي).',
+ specimen:'Stool (direct wet preparation or concentration); repeat samples.',specimenAr:'البراز (تحضير رطب مباشر أو تركيز)؛ مع تكرار العيّنات.',
+ egg:{size:'40–60 × 30–50 µm',shape:'Oval to subspherical, colourless, thin shell',key:'Two polar thickenings on the inner membrane with 4–8 polar filaments; hexacanth oncosphere',keyAr:'ثخانتان قطبيتان على الغشاء الداخلي مع 4–8 خيوط قطبية؛ جنين سداسي الأشواك'},
+ adult:['Small: about 15–40 mm long.','Scolex with four suckers and a rostellum with a single row of hooks.'],
+ hosts:{def:'Humans (and rodents)',defAr:'الإنسان (والقوارض)',inter:'Not required; insects (beetles, fleas) can act as intermediate hosts',interAr:'غير ضروري؛ وقد تعمل الحشرات (الخنافس والبراغيث) كعائل وسيط',inf:'Swallowing eggs (faecal–oral); autoinfection is possible',infAr:'ابتلاع البيض (برازي-فموي)؛ والعدوى الذاتية ممكنة'},
+ cycle:['Eggs passed in stool are infective at once.','Swallowed eggs hatch; the oncosphere forms a cysticercoid in the intestinal villi.','The cysticercoid returns to the lumen and matures into an adult.','Eggs can hatch inside the same person (autoinfection), so worm numbers can build up without new exposure.'],
+ clinical:['Common in children, especially in crowded settings and institutions.','Usually mild; heavy infection causes abdominal pain, diarrhoea and poor weight gain.'],
+ lab:['Eggs are infective when passed: handle stool with gloves.','Examine repeated samples and check household contacts.'],
+ ddx:['H. diminuta egg: larger (about 70–85 µm), no polar filaments.','Taenia egg: thick striated shell, no polar thickenings.'],
+ ref:['cdc_dpdx','cheesbrough1']}
+];
