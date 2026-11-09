@@ -17,7 +17,7 @@ const ANAT_SYS=[
 ];
 const AWC='https://commons.wikimedia.org/wiki/File:';
 const ANAT=[
-{id:'heart',sys:'cardio',f:'images/anatomy/anat-heart.webp',w:900,h:1083,title:'Heart — chambers, valves and great vessels',ar:'القلب – الحجرات والصمامات والأوعية الكبيرة',
+{id:'heart',sys:'cardio',f:'anat-heart.webp',w:900,h:1083,title:'Heart — chambers, valves and great vessels',ar:'القلب – الحجرات والصمامات والأوعية الكبيرة',
  view:'Coronal section of the heart seen from the front: the patient’s right side is on the viewer’s left. Blue = deoxygenated blood, red = oxygenated blood.',
  by:'Stenemo (after Wapcaplet)',lic:'CC BY-SA 4.0',src:AWC+'Diagram_of_the_human_heart_(no_labels).svg',ref:['grays','openstax_ap'],
  pins:[
@@ -33,7 +33,7 @@ const ANAT=[
   {x:600,y:560,n:'Mitral (bicuspid) valve',ar:'الصمام التاجي (ثنائي الشرف)',d:'Between the left atrium and left ventricle; two cusps.'},
   {x:210,y:975,n:'Inferior vena cava',ar:'الوريد الأجوف السفلي',d:'Returns deoxygenated blood from the lower body to the right atrium.'}
  ]},
-{id:'brain',sys:'nervous',f:'images/anatomy/anat-brain.webp',w:900,h:642,title:'Brain — lobes of the cerebrum (lateral view)',ar:'الدماغ – فصوص المخ (منظر جانبي)',
+{id:'brain',sys:'nervous',f:'anat-brain.webp',w:900,h:642,title:'Brain — lobes of the cerebrum (lateral view)',ar:'الدماغ – فصوص المخ (منظر جانبي)',
  view:'Left side view of the brain with the front of the brain on the viewer’s right; each lobe of the cerebrum is shown in a different colour.',
  by:'Ndelarosep',lic:'CC0',src:AWC+'Lobes_of_the_brain_INV.jpg',ref:['grays','openstax_ap'],
  pins:[
@@ -46,7 +46,7 @@ const ANAT=[
   {x:466,y:140,n:'Central sulcus',ar:'التلم المركزي',d:'Separates the frontal lobe from the parietal lobe: motor cortex in front, sensory cortex behind.'},
   {x:604,y:400,n:'Lateral sulcus (Sylvian fissure)',ar:'التلم الجانبي (شق سلفيوس)',d:'Separates the temporal lobe from the frontal and parietal lobes.'}
  ]},
-{id:'spine',sys:'nervous',f:'images/anatomy/anat-spine.webp',w:900,h:1337,title:'Vertebral column and spinal nerves (posterior view)',ar:'العمود الفقري والأعصاب الشوكية (منظر خلفي)',
+{id:'spine',sys:'nervous',f:'anat-spine.webp',w:900,h:1337,title:'Vertebral column and spinal nerves (posterior view)',ar:'العمود الفقري والأعصاب الشوكية (منظر خلفي)',
  view:'The vertebral column from behind with the spinal nerves leaving it; the empty boxes mark the cervical, thoracic and lumbar regions.',
  by:'Andrewmeyerson',lic:'CC BY-SA 4.0',src:AWC+'Diagram_of_the_Spinal_Cord_Unlabeled.jpg',ref:['grays','openstax_ap'],
  pins:[
@@ -59,7 +59,7 @@ const ANAT=[
   {x:420,y:530,n:'Intercostal (thoracic spinal) nerves',ar:'الأعصاب الوربية',d:'Run between the ribs and supply the chest and abdominal wall.'},
   {x:360,y:1050,n:'Sciatic nerve',ar:'العصب الوركي',d:'The largest nerve in the body (L4–S3), from the sacral plexus to the back of the thigh and the leg.'}
  ]},
-{id:'eye',sys:'nervous',f:'images/anatomy/anat-eye.webp',w:900,h:644,title:'Eye — structure of the eyeball',ar:'العين – تركيب كرة العين',
+{id:'eye',sys:'nervous',f:'anat-eye.webp',w:900,h:644,title:'Eye — structure of the eyeball',ar:'العين – تركيب كرة العين',
  view:'Cross-section of the eyeball with the front of the eye on the left; the pink line shows the path of light to the back of the eye.',
  by:'Chris Sullivan',lic:'CC BY-SA 4.0',src:AWC+'Eye_anatomy_drawing_that_is_unlabeled_for_teaching.jpg',ref:['grays','openstax_ap'],
  pins:[
@@ -73,7 +73,7 @@ const ANAT=[
   {x:540,y:100,n:'Sclera',ar:'الصلبة',d:'Tough white outer coat of the eyeball.'},
   {x:580,y:250,n:'Vitreous body',ar:'الجسم الزجاجي',d:'Clear gel that fills the back of the eyeball.'}
  ]},
-{id:'skeleton',sys:'musculo',f:'images/anatomy/anat-skeleton.webp',w:900,h:1740,title:'Skeleton — major bones (anterior view)',ar:'الهيكل العظمي – العظام الرئيسية (منظر أمامي)',
+{id:'skeleton',sys:'musculo',f:'anat-skeleton.webp',w:900,h:1740,title:'Skeleton — major bones (anterior view)',ar:'الهيكل العظمي – العظام الرئيسية (منظر أمامي)',
  view:'The adult skeleton from the front: the patient’s right side is on the viewer’s left.',
  by:'Mikael Häggström',lic:'Public domain',src:AWC+'Human_skeleton_front_-_no_labels.svg',ref:['grays','openstax_ap'],
  pins:[
@@ -93,7 +93,7 @@ const ANAT=[
   {x:175,y:920,n:'Bones of the hand',ar:'عظام اليد',d:'Eight carpals, five metacarpals and fourteen phalanges.'},
   {x:330,y:1650,n:'Bones of the foot',ar:'عظام القدم',d:'Seven tarsals, five metatarsals and fourteen phalanges.'}
  ]},
-{id:'muscles',sys:'musculo',f:'images/anatomy/anat-muscles.webp',w:659,h:751,title:'Muscles — superficial muscles (anterior view)',ar:'العضلات – العضلات السطحية (منظر أمامي)',
+{id:'muscles',sys:'musculo',f:'anat-muscles.webp',w:659,h:751,title:'Muscles — superficial muscles (anterior view)',ar:'العضلات – العضلات السطحية (منظر أمامي)',
  view:'Superficial muscles from the front; the left side of the chest is opened to show the ribs. The leader lines are from the original figure, with its labels removed.',
  by:'OpenStax',lic:'CC BY 4.0',src:AWC+'Muscles;_anterior_view;_unlabeled.png',ref:['openstax_ap','grays'],
  pins:[
@@ -107,7 +107,7 @@ const ANAT=[
   {x:270,y:460,n:'Quadriceps femoris',ar:'العضلة رباعية الرؤوس الفخذية',d:'Extends the knee.'},
   {x:265,y:600,n:'Tibialis anterior',ar:'العضلة الظنبوبية الأمامية',d:'Dorsiflexes and inverts the foot.'}
  ]},
-{id:'resp',sys:'resp',f:'images/anatomy/anat-resp.webp',w:900,h:1217,title:'Respiratory system — airways and lungs',ar:'الجهاز التنفسي – المجاري الهوائية والرئتان',
+{id:'resp',sys:'resp',f:'anat-resp.webp',w:900,h:1217,title:'Respiratory system — airways and lungs',ar:'الجهاز التنفسي – المجاري الهوائية والرئتان',
  view:'Upper and lower airways from the front (the patient’s right on the viewer’s left), with an enlarged view of alveoli and their blood supply.',
  by:'Bibi Saint-Pol, Jmarchn (after Mariana Ruiz)',lic:'CC BY-SA 3.0',src:AWC+'Respiratory_system_complete_no_labels.svg',ref:['grays','openstax_ap'],
  pins:[
@@ -122,7 +122,7 @@ const ANAT=[
   {x:300,y:1020,n:'Diaphragm',ar:'الحجاب الحاجز',d:'The main muscle of breathing; it flattens to draw air in.'},
   {x:600,y:150,n:'Alveoli',ar:'الحويصلات الهوائية',d:'Thin-walled air sacs where oxygen and carbon dioxide are exchanged with the capillary blood.'}
  ]},
-{id:'digest',sys:'digest',f:'images/anatomy/anat-digest.webp',w:900,h:803,title:'Digestive system — the gastrointestinal tract and accessory organs',ar:'الجهاز الهضمي – القناة الهضمية والأعضاء الملحقة',
+{id:'digest',sys:'digest',f:'anat-digest.webp',w:900,h:803,title:'Digestive system — the gastrointestinal tract and accessory organs',ar:'الجهاز الهضمي – القناة الهضمية والأعضاء الملحقة',
  view:'The digestive tract from mouth to anus with the liver, gallbladder and pancreas (the patient’s right on the viewer’s left). The lines are from the original diagram, without labels.',
  by:'Mariana Ruiz (LadyofHats), Moez, Darkdadaah',lic:'Public domain',src:AWC+'Digestive_system_diagram_no_labels_arrows.svg',ref:['grays','openstax_ap'],
  pins:[
@@ -141,7 +141,7 @@ const ANAT=[
   {x:460,y:703,n:'Rectum',ar:'المستقيم',d:'Stores faeces before defecation.'},
   {x:462,y:770,n:'Anus',ar:'الشرج',d:'The opening at the end of the tract, controlled by the anal sphincters.'}
  ]},
-{id:'urinary',sys:'urinary',f:'images/anatomy/anat-urinary.webp',w:900,h:1218,title:'Urinary system — kidneys, ureters and bladder',ar:'الجهاز البولي – الكليتان والحالبان والمثانة',
+{id:'urinary',sys:'urinary',f:'anat-urinary.webp',w:900,h:1218,title:'Urinary system — kidneys, ureters and bladder',ar:'الجهاز البولي – الكليتان والحالبان والمثانة',
  view:'The urinary tract from the front (the patient’s right on the viewer’s left); the left kidney is cut open to show its inside.',
  by:'Andrewmeyerson',lic:'CC BY-SA 3.0',src:AWC+'Urinary_System_Large_Unlabeled.jpg',ref:['grays','openstax_ap'],
  pins:[
@@ -156,7 +156,7 @@ const ANAT=[
   {x:410,y:520,n:'Inferior vena cava',ar:'الوريد الأجوف السفلي',d:'Receives the renal veins and returns blood to the right atrium.'},
   {x:540,y:300,n:'Renal artery',ar:'الشريان الكلوي',d:'Brings about a fifth of the cardiac output to the kidney.'}
  ]},
-{id:'endo',sys:'endo',f:'images/anatomy/anat-endo.webp',w:900,h:864,title:'Endocrine system — major glands',ar:'جهاز الغدد الصماء – الغدد الرئيسية',
+{id:'endo',sys:'endo',f:'anat-endo.webp',w:900,h:864,title:'Endocrine system — major glands',ar:'جهاز الغدد الصماء – الغدد الرئيسية',
  view:'Female (left) and male (right) figures with the main endocrine glands; the circles enlarge the brain region and the thyroid seen from behind.',
  by:'OpenStax, Tomáš Kebert, umimeto.org',lic:'CC BY-SA 4.0',src:AWC+'Human_endocrine_male_&_female_svg_no_labels.svg',ref:['openstax_ap','tietz'],
  pins:[

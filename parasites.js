@@ -17,7 +17,7 @@ const CDC_PD={by:'CDC Public Health Image Library (PHIL)',lic:'Public domain'};
 const PARASITES=[
 /* ---- Trematodes ---- */
 {id:'sh',grp:'trem',n:'Schistosoma haematobium',common:'Urinary blood fluke',ar:'البلهارسيا البولية',disease:'Urogenital schistosomiasis',diseaseAr:'البلهارسيا البولية التناسلية',
- ph:[{f:'images/sh-egg.jpg',kind:'egg',cap:'Egg in urine with its terminal spine (unstained wet preparation).',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Schistosoma_haematobium_egg_4843_lores.jpg'}],
+ ph:[{f:'sh-egg.jpg',kind:'egg',cap:'Egg in urine with its terminal spine (unstained wet preparation).',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Schistosoma_haematobium_egg_4843_lores.jpg'}],
  habitat:'Adults live in pairs in the veins around the urinary bladder (vesical venous plexus).',habitatAr:'تعيش الديدان البالغة أزواجاً في الأوردة المحيطة بالمثانة البولية.',
  specimen:'Urine: terminal urine collected around midday (10:00–14:00), after light exercise; filtration or sedimentation of 10 mL.',specimenAr:'البول: آخر دفعة من البول قرب منتصف النهار (10:00–14:00) بعد مجهود خفيف، مع الترشيح أو الترسيب لـ 10 مل.',
  egg:{size:'110–170 × 40–70 µm',shape:'Oval, with a rounded front end',key:'Terminal spine; no operculum; contains a miracidium',keyAr:'شوكة طرفية؛ بلا غطاء؛ تحتوي على الميراسيديوم'},
@@ -30,7 +30,7 @@ const PARASITES=[
  atlas:'sh-egg',ref:['cdc_dpdx','who_schisto','cheesbrough1']},
 
 {id:'sm',grp:'trem',n:'Schistosoma mansoni',common:'Intestinal blood fluke',ar:'البلهارسيا المعوية',disease:'Intestinal and hepatosplenic schistosomiasis',diseaseAr:'البلهارسيا المعوية والكبدية الطحالية',
- ph:[{f:'images/para-sm-egg.jpg',kind:'egg',cap:'Egg with the characteristic lateral spine.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Schistosoma_mansoni_egg_4841_lores.jpg'}],
+ ph:[{f:'para-sm-egg.jpg',kind:'egg',cap:'Egg with the characteristic lateral spine.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Schistosoma_mansoni_egg_4841_lores.jpg'}],
  habitat:'Adults live in pairs in the mesenteric veins draining the large intestine.',habitatAr:'تعيش الديدان البالغة أزواجاً في الأوردة المساريقية للأمعاء الغليظة.',
  specimen:'Stool: Kato–Katz thick smear (eggs per gram) or formol–ether concentration; rectal biopsy when stool is negative.',specimenAr:'البراز: مسحة كاتو-كاتز السميكة (بيض لكل غرام) أو التركيز بالفورمول والإيثر؛ وخزعة المستقيم إذا كان البراز سلبياً.',
  egg:{size:'114–180 × 45–70 µm',shape:'Large, oval',key:'Prominent lateral spine; no operculum; contains a miracidium',keyAr:'شوكة جانبية بارزة؛ بلا غطاء؛ تحتوي على الميراسيديوم'},
@@ -43,8 +43,8 @@ const PARASITES=[
  ref:['cdc_dpdx','who_schisto','cheesbrough1']},
 
 {id:'fh',grp:'trem',n:'Fasciola hepatica',common:'Sheep liver fluke',ar:'دودة الكبد الورقية (المتورقة الكبدية)',disease:'Fascioliasis',diseaseAr:'داء المتورقات',
- ph:[{f:'images/para-fh-egg.jpg',kind:'egg',cap:'Large, thin-shelled egg with a small operculum at one end (unembryonated).',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Egg_of_Fasciola_hepatica_08G0041_lores.jpg'},
-     {f:'images/para-fh-adult.jpg',kind:'adult',cap:'Adult flukes: leaf-shaped, with a cephalic cone and "shoulders".',by:'Alan R Walker',lic:'CC BY-SA 3.0',src:'https://commons.wikimedia.org/wiki/File:Fasciola-hepatica-adults.jpg'}],
+ ph:[{f:'para-fh-egg.jpg',kind:'egg',cap:'Large, thin-shelled egg with a small operculum at one end (unembryonated).',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Egg_of_Fasciola_hepatica_08G0041_lores.jpg'},
+     {f:'para-fh-adult.jpg',kind:'adult',cap:'Adult flukes: leaf-shaped, with a cephalic cone and "shoulders".',by:'Alan R Walker',lic:'CC BY-SA 3.0',src:'https://commons.wikimedia.org/wiki/File:Fasciola-hepatica-adults.jpg'}],
  habitat:'Adults live in the large bile ducts of the liver.',habitatAr:'تعيش الديدان البالغة في القنوات الصفراوية الكبيرة في الكبد.',
  specimen:'Stool or duodenal aspirate for eggs (chronic phase); serology in the acute phase before eggs appear.',specimenAr:'البراز أو رشافة الاثني عشر للبحث عن البيض (المرحلة المزمنة)؛ والفحص المصلي في المرحلة الحادة قبل ظهور البيض.',
  egg:{size:'130–150 × 60–90 µm',shape:'Broadly ellipsoidal, thin shell, yellow-brown (bile-stained)',key:'Small, inconspicuous operculum; unembryonated when passed',keyAr:'غطاء صغير غير واضح؛ غير مكتملة الجنين عند خروجها'},
@@ -57,7 +57,7 @@ const PARASITES=[
  ref:['cdc_dpdx','who_foodborne','cheesbrough1']},
 
 {id:'cs',grp:'trem',n:'Clonorchis sinensis',common:'Chinese liver fluke',ar:'دودة الكبد الصينية',disease:'Clonorchiasis',diseaseAr:'داء المتفرّعات الخصية',
- ph:[{f:'images/para-cs-egg.jpg',kind:'egg',cap:'Small operculated egg with "shouldered" operculum.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_egg_06G0049_jpg_lores.jpg'}],
+ ph:[{f:'para-cs-egg.jpg',kind:'egg',cap:'Small operculated egg with "shouldered" operculum.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Clonorchis_sinensis_egg_06G0049_jpg_lores.jpg'}],
  habitat:'Adults live in the small bile ducts of the liver.',habitatAr:'تعيش الديدان البالغة في القنوات الصفراوية الصغيرة في الكبد.',
  specimen:'Stool (formol–ether concentration) or duodenal aspirate.',specimenAr:'البراز (التركيز بالفورمول والإيثر) أو رشافة الاثني عشر.',
  egg:{size:'27–35 × 11–20 µm',shape:'Small, oval, light yellow-brown',key:'Operculum seated in prominent "shoulders"; small knob at the opposite end; contains a miracidium',keyAr:'غطاء مستقر بين «كتفين» بارزين؛ نتوء صغير في الطرف المقابل؛ تحتوي على الميراسيديوم'},
@@ -71,7 +71,7 @@ const PARASITES=[
 
 /* ---- Cestodes ---- */
 {id:'tsag',grp:'cest',n:'Taenia saginata',common:'Beef tapeworm',ar:'الدودة الشريطية البقرية',disease:'Taeniasis',diseaseAr:'داء الشريطيات',
- ph:[{f:'images/para-taenia-egg.jpg',kind:'egg',cap:'Taenia egg: thick, radially striated shell (embryophore) around the oncosphere. T. saginata and T. solium eggs look the same.',by:'CDC DPDx',lic:'Public domain',src:'https://commons.wikimedia.org/wiki/File:Taenia_egg.jpg'}],
+ ph:[{f:'para-taenia-egg.jpg',kind:'egg',cap:'Taenia egg: thick, radially striated shell (embryophore) around the oncosphere. T. saginata and T. solium eggs look the same.',by:'CDC DPDx',lic:'Public domain',src:'https://commons.wikimedia.org/wiki/File:Taenia_egg.jpg'}],
  habitat:'The adult lives in the human small intestine.',habitatAr:'تعيش الدودة البالغة في الأمعاء الدقيقة للإنسان.',
  specimen:'Stool for eggs and proglottids; perianal adhesive tape; a passed proglottid for species identification.',specimenAr:'البراز للبحث عن البيض والقطع؛ والشريط اللاصق حول الشرج؛ وقطعة خارجة لتحديد النوع.',
  egg:{size:'30–35 µm diameter',shape:'Spherical, brown',key:'Thick radially striated embryophore; hexacanth oncosphere with 3 pairs of hooklets',keyAr:'غلاف جنيني سميك مخطط شعاعياً؛ جنين سداسي الأشواك بثلاثة أزواج من الخطاطيف'},
@@ -84,8 +84,8 @@ const PARASITES=[
  ref:['cdc_dpdx','who_taeniasis','cheesbrough1']},
 
 {id:'tsol',grp:'cest',n:'Taenia solium',common:'Pork tapeworm',ar:'الدودة الشريطية الخنزيرية',disease:'Taeniasis and cysticercosis',diseaseAr:'داء الشريطيات وداء الكيسات المذنبة',
- ph:[{f:'images/para-ts-scolex.jpg',kind:'scolex',cap:'Armed scolex: four suckers and a rostellum with two rows of hooks.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg'},
-     {f:'images/para-taenia-egg.jpg',kind:'egg',cap:'Taenia egg (same appearance as T. saginata).',by:'CDC DPDx',lic:'Public domain',src:'https://commons.wikimedia.org/wiki/File:Taenia_egg.jpg'}],
+ ph:[{f:'para-ts-scolex.jpg',kind:'scolex',cap:'Armed scolex: four suckers and a rostellum with two rows of hooks.',...CDC_PD,src:'https://commons.wikimedia.org/wiki/File:Taenia_solium_tapeworm_scolex_with_its_four_suckers_and_two_rows_of_hooks_5262_lores.jpg'},
+     {f:'para-taenia-egg.jpg',kind:'egg',cap:'Taenia egg (same appearance as T. saginata).',by:'CDC DPDx',lic:'Public domain',src:'https://commons.wikimedia.org/wiki/File:Taenia_egg.jpg'}],
  habitat:'The adult lives in the human small intestine; the larva (cysticercus) can lodge in human muscle, brain and eye.',habitatAr:'تعيش الدودة البالغة في الأمعاء الدقيقة؛ ويمكن أن تستقر اليرقة (الكيسة المذنبة) في العضلات والدماغ والعين لدى الإنسان.',
  specimen:'Taeniasis: stool for eggs and proglottids. Cysticercosis: imaging (CT/MRI) and serology (e.g. immunoblot).',specimenAr:'داء الشريطيات: البراز للبيض والقطع. داء الكيسات المذنبة: التصوير الطبقي أو الرنين والفحص المصلي.',
  egg:{size:'30–35 µm diameter',shape:'Spherical, brown',key:'Same as T. saginata: radially striated embryophore with a hexacanth oncosphere',keyAr:'مثل الشريطية البقرية: غلاف مخطط شعاعياً وجنين سداسي الأشواك'},
@@ -98,7 +98,7 @@ const PARASITES=[
  ref:['cdc_dpdx','who_taeniasis','cheesbrough1']},
 
 {id:'eg',grp:'cest',n:'Echinococcus granulosus',common:'Dog tapeworm (hydatid tapeworm)',ar:'الشوكية الحبيبية (دودة الكلاب الشريطية)',disease:'Cystic echinococcosis (hydatid disease)',diseaseAr:'داء الأكياس العدارية',
- ph:[{f:'images/para-eg-protoscolex.jpg',kind:'protoscolex',cap:'Protoscolex from a hydatid cyst, with hooks in two rows ("hydatid sand").',by:'Stefan Walkowski',lic:'CC BY-SA 4.0',src:'https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg'}],
+ ph:[{f:'para-eg-protoscolex.jpg',kind:'protoscolex',cap:'Protoscolex from a hydatid cyst, with hooks in two rows ("hydatid sand").',by:'Stefan Walkowski',lic:'CC BY-SA 4.0',src:'https://commons.wikimedia.org/wiki/File:E.granulosus-protoscolex.jpg'}],
  habitat:'The tiny adult lives in the dog’s intestine; humans carry the larval hydatid cyst, mostly in the liver (about 70%) and lungs (about 20%).',habitatAr:'تعيش الدودة البالغة الصغيرة في أمعاء الكلب؛ ويحمل الإنسان الكيس العداري اليرقي، غالباً في الكبد (نحو 70%) والرئتين (نحو 20%).',
  specimen:'Imaging (ultrasound, CT) and serology; microscopy of cyst fluid or surgical material for protoscolices and hooklets.',specimenAr:'التصوير (الموجات فوق الصوتية والطبقي) والفحص المصلي؛ وفحص سائل الكيس أو المادة الجراحية مجهرياً للبحث عن الرؤيسات والخطاطيف.',
  egg:{size:'30–35 µm (taeniid egg)',shape:'Spherical',key:'Same as Taenia; not found in human stool because humans are intermediate hosts',keyAr:'مثل بيض الشريطيات؛ لا يوجد في براز الإنسان لأنه عائل وسيط'},
@@ -111,7 +111,7 @@ const PARASITES=[
  ref:['cdc_dpdx','who_echino','who_biosafety']},
 
 {id:'hn',grp:'cest',n:'Hymenolepis nana',common:'Dwarf tapeworm',ar:'الدودة الشريطية القزمة',disease:'Hymenolepiasis',diseaseAr:'داء المحرشفات',
- ph:[{f:'images/para-hn-egg.jpg',kind:'egg',cap:'Egg with an inner membrane showing two polar thickenings and polar filaments around the hexacanth oncosphere.',by:'CDC Public Health Image Library (PHIL)',lic:'CC0',src:'https://commons.wikimedia.org/wiki/File:4836_lores.jpg'}],
+ ph:[{f:'para-hn-egg.jpg',kind:'egg',cap:'Egg with an inner membrane showing two polar thickenings and polar filaments around the hexacanth oncosphere.',by:'CDC Public Health Image Library (PHIL)',lic:'CC0',src:'https://commons.wikimedia.org/wiki/File:4836_lores.jpg'}],
  habitat:'The adult lives in the small intestine (ileum).',habitatAr:'تعيش الدودة البالغة في الأمعاء الدقيقة (اللفائفي).',
  specimen:'Stool (direct wet preparation or concentration); repeat samples.',specimenAr:'البراز (تحضير رطب مباشر أو تركيز)؛ مع تكرار العيّنات.',
  egg:{size:'40–60 × 30–50 µm',shape:'Oval to subspherical, colourless, thin shell',key:'Two polar thickenings on the inner membrane with 4–8 polar filaments; hexacanth oncosphere',keyAr:'ثخانتان قطبيتان على الغشاء الداخلي مع 4–8 خيوط قطبية؛ جنين سداسي الأشواك'},

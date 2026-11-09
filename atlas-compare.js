@@ -6,7 +6,7 @@ Object.assign(REFS,{
 feakins:{c:'Feakins RM. Inflammatory bowel disease biopsies: updated British Society of Gastroenterology reporting guidelines. J Clin Pathol. 2013;66(12):1005–1026.',u:'https://doi.org/10.1136/jclinpath-2013-201885'}
 });
 ATLAS.push(
-{id:'haem-lymph',sub:'wbc',f:'images/haem-lymph.jpg',title:'Normal small lymphocyte',ar:'خلية لمفاوية صغيرة طبيعية',organ:'Peripheral blood',stain:'Wright',cat:'haem',proto:'WBC differential (blood film)',
+{id:'haem-lymph',sub:'wbc',f:'haem-lymph.jpg',title:'Normal small lymphocyte',ar:'خلية لمفاوية صغيرة طبيعية',organ:'Peripheral blood',stain:'Wright',cat:'haem',proto:'WBC differential (blood film)',
 view:'A small lymphocyte among normal red cells: a round, dense, dark purple nucleus with only a thin rim of blue cytoplasm; it is about the size of a red cell.',
 key:['The commonest lymphocyte in blood: about 7–10 µm, close to the size of a red cell.'],
 feat:['Round nucleus with dense, clumped chromatin','Scant, pale blue cytoplasm (high N:C ratio)','No granules or only a few azurophilic granules'],
@@ -15,7 +15,7 @@ ddx:['Reactive lymphocytes (larger, abundant blue cytoplasm)','CLL cells (simila
 teach:['Use the small lymphocyte nucleus as a built-in size ruler for red cells.'],
 ref:['dacie','bain_bc'],by:'Echinaceapallida',lic:'CC BY-SA 4.0',src:WCF+'Blood-lymphocyte2.jpg'},
 
-{id:'haem-baso',sub:'wbc',f:'images/haem-baso.jpg',title:'Normal basophil',ar:'خلية قاعدية طبيعية',organ:'Peripheral blood',stain:'Wright',cat:'haem',proto:'WBC differential (blood film)',
+{id:'haem-baso',sub:'wbc',f:'haem-baso.jpg',title:'Normal basophil',ar:'خلية قاعدية طبيعية',organ:'Peripheral blood',stain:'Wright',cat:'haem',proto:'WBC differential (blood film)',
 view:'A basophil among red cells and platelets: large dark purple-black granules fill the cell and hide most of the nucleus.',
 key:['The least common white cell in blood (usually under 1–2% of the differential).'],
 feat:['Coarse purple-black granules covering the nucleus','Cell slightly smaller than or similar to a neutrophil'],
@@ -24,7 +24,7 @@ ddx:['Neutrophil with toxic granulation (granules do not hide the nucleus)','Mas
 teach:['Granules are water-soluble: poor fixation or washing can leave basophils looking empty.'],
 ref:['dacie','bain_bc'],by:'Echinaceapallida',lic:'CC BY-SA 4.0',src:WCF+'Blood-basophil2.jpg'},
 
-{id:'haem-pltclump',sub:'plt',f:'images/haem-pltclump.jpg',title:'Platelet clumps (aggregates)',ar:'تكتّل الصفائح الدموية',organ:'Peripheral blood',stain:'May-Grünwald-Giemsa',cat:'haem',proto:'Complete blood count (CBC)',
+{id:'haem-pltclump',sub:'plt',f:'haem-pltclump.jpg',title:'Platelet clumps (aggregates)',ar:'تكتّل الصفائح الدموية',organ:'Peripheral blood',stain:'May-Grünwald-Giemsa',cat:'haem',proto:'Complete blood count (CBC)',
 view:'Two large aggregates of purple platelets joined together, with a few red cells around them, on a May-Grünwald-Giemsa film.',
 key:['Clumped platelets are not counted individually by the analyser, so the platelet count is falsely low (pseudothrombocytopenia).'],
 feat:['Tight groups of many platelets','Often at the feathered edge of the film'],
@@ -34,7 +34,7 @@ pit:['EDTA-dependent clumping is a common laboratory artefact; a partly clotted 
 teach:['Always review the film before reporting an unexpectedly low platelet count.'],
 ref:['dacie','bain_bc'],by:'Tommaso Leonardi (caption cropped)',lic:'CC BY 3.0',src:WCF+'Platelets.jpg'},
 
-{id:'uc',f:'images/uc-intermed.jpg',title:'Ulcerative colitis — chronic active colitis',ar:'التهاب القولون التقرحي – التهاب مزمن نشط',organ:'Colon (biopsy)',stain:'H&E',cat:'he',proto:'Haematoxylin and eosin (H&E) staining',
+{id:'uc',f:'uc-intermed.jpg',title:'Ulcerative colitis — chronic active colitis',ar:'التهاب القولون التقرحي – التهاب مزمن نشط',organ:'Colon (biopsy)',stain:'H&E',cat:'he',proto:'Haematoxylin and eosin (H&E) staining',
 view:'Colonic mucosa with a dense inflammatory infiltrate filling the lamina propria between crypts of uneven size and spacing; near the top, a crypt lumen is filled with neutrophils (crypt abscess). Second image: higher power of the inflamed lamina propria and crypts.',
 key:['Ulcerative colitis is a chronic inflammatory bowel disease of the colon that starts in the rectum and extends continuously.','Chronic features (architectural distortion, basal plasmacytosis) separate it from acute infective colitis.'],
 feat:['Crypt architectural distortion: crypts irregular, branched or reduced','Dense lymphoplasmacytic infiltrate in the lamina propria, including basal plasmacytosis','Activity: neutrophils in crypt epithelium (cryptitis) and crypt lumens (crypt abscesses)'],
@@ -44,7 +44,7 @@ pit:['Treated UC can look patchy and lose rectal involvement','Biopsy early in t
 mark:['Stool cultures and C. difficile testing to exclude infection; dysplasia surveillance in long-standing colitis'],
 teach:['Compare with the normal colon slide: straight, evenly spaced crypts reaching the muscularis mucosae.'],
 ref:['feakins','robbins'],by:'CoRus13',lic:'CC BY-SA 4.0',src:WCF+'Moderate_chronic_active_ulcerative_colitis,_intermed._mag.jpg',
-more:[{f:'images/uc-high.jpg',cap:'Higher power: crypts surrounded by dense inflammation with plasma cells and neutrophils.',by:'CoRus13',lic:'CC BY-SA 4.0',src:WCF+'Moderate_chronic_active_ulcerative_colitis,_high_mag.jpg'}]}
+more:[{f:'uc-high.jpg',cap:'Higher power: crypts surrounded by dense inflammation with plasma cells and neutrophils.',by:'CoRus13',lic:'CC BY-SA 4.0',src:WCF+'Moderate_chronic_active_ulcerative_colitis,_high_mag.jpg'}]}
 );
 
 const COMPARE=[

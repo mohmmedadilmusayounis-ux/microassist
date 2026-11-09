@@ -3,7 +3,7 @@
 // built from simple shapes in code, with named parts that match INSTR[].parts in instruments.js. 1 unit ≈ 10 cm.
 import {Scene,PerspectiveCamera,WebGLRenderer,Group,Mesh,MeshStandardMaterial,BoxGeometry,CylinderGeometry,
   TorusGeometry,SphereGeometry,CircleGeometry,ConeGeometry,HemisphereLight,DirectionalLight,Vector3,Vector2,Raycaster,Box3,Color,
-  BufferGeometry,Float32BufferAttribute,Points,PointsMaterial,SRGBColorSpace,ACESFilmicToneMapping,OrbitControls} from './vendor/three.min.js';
+  BufferGeometry,Float32BufferAttribute,Points,PointsMaterial,SRGBColorSpace,ACESFilmicToneMapping,OrbitControls} from './three.min.js';
 
 const C={body:0xe9edf2,dark:0x3a4352,steel:0xaab3bf,blue:0x1f63c6,wax:0xf2e8cf,glass:0xcfe8ff,red:0xd23f57,black:0x1c2029,
   amber:0xd99b2b,cold:0x8fc6ee,white:0xfafbfc,green:0x22966a,blood:0x8e1b24,plasma:0xf1d58a,purple:0x7a5bd6};
